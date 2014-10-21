@@ -62,3 +62,4 @@ E:\Projects\azureServices\EventRegistration\bin\zh-Hant\System.Spatial.resources
 E:\Projects\azureServices\EventRegistration\obj\Debug\EventRegistration.csprojResolveAssemblyReference.cache
 E:\Projects\azureServices\EventRegistration\obj\Debug\EventRegistration.dll
 E:\Projects\azureServices\EventRegistration\obj\Debug\EventRegistration.pdb
+D:\GIT\azureServices\EventRegistration\obj\Debug\EventRegistration.csprojResolveAssemblyReference.cache
