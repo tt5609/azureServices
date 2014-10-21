@@ -9,8 +9,10 @@ namespace Registration.Models
     public class Attendee
     {
         public int Id { get; set; }
+        [Required]
         [Display(Name = "Name 姓名")]
         public string Name { get; set; }
+        [Required]
         [Display(Name = "Email 電子郵件地址")]
         public string Email { get; set; }
         [Display(Name = "Number of people 人數")]
