@@ -3,26 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "azureServices(1)", "http://localhost:51023", "{CB162809-8634-461F-B9C4-DDE68D5396ED}"
-	ProjectSection(WebsiteProperties) = preProject
-		UseIISExpress = "true"
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_51023"
-		Debug.AspNetCompiler.PhysicalPath = "..\azureServices\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_51023\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_51023"
-		Release.AspNetCompiler.PhysicalPath = "..\azureServices\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_51023\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		SlnRelativePath = "..\azureServices\"
-	EndProjectSection
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "AzureData", "AzureData\AzureData.sqlproj", "{793C0668-FC02-4150-8BCC-D0DD5C370CFE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Registration", "Registration\Registration.csproj", "{D2B8322E-0104-4F8E-A4FA-4436A0C6E0F2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,10 +13,16 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{CB162809-8634-461F-B9C4-DDE68D5396ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CB162809-8634-461F-B9C4-DDE68D5396ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CB162809-8634-461F-B9C4-DDE68D5396ED}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{CB162809-8634-461F-B9C4-DDE68D5396ED}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{793C0668-FC02-4150-8BCC-D0DD5C370CFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{793C0668-FC02-4150-8BCC-D0DD5C370CFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{793C0668-FC02-4150-8BCC-D0DD5C370CFE}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{793C0668-FC02-4150-8BCC-D0DD5C370CFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{793C0668-FC02-4150-8BCC-D0DD5C370CFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{793C0668-FC02-4150-8BCC-D0DD5C370CFE}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{D2B8322E-0104-4F8E-A4FA-4436A0C6E0F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2B8322E-0104-4F8E-A4FA-4436A0C6E0F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2B8322E-0104-4F8E-A4FA-4436A0C6E0F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2B8322E-0104-4F8E-A4FA-4436A0C6E0F2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

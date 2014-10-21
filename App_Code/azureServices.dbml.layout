@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="azureServices">
+  <DataContextMoniker Name="/azureServicesDataContext" />
+  <nestedChildShapes>
+    <classShape Id="1ec2a362-45c5-41ea-a396-d54c4228359c" absoluteBounds="3.875, 3.125, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/azureServicesDataContext/Attendee" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6104a2dc-bc3f-43aa-8bf4-f87cb4be89d9" absoluteBounds="3.89, 3.585, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

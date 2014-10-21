@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="63a619a9-39cb-4381-ab1a-6e4b56e37539" ChangeDateTime="10/21/2014 16:36:20">
+    <Property Name="ElementName" Value="[dbo].[Attendee].[IsJoiningBan]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Attendee]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="IsJoiningBanquet" />
+  </Operation>
+</Operations>
