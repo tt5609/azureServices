@@ -66,5 +66,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="AzureData.publish.xml" />
+    <None Include="localdb.publish.publish.xml" />
   </ItemGroup>
 </Project>

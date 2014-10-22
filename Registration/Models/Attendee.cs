@@ -22,7 +22,7 @@ namespace Registration.Models
         public Int32 NumberOfAttendee { get; set; }
         [Display(Name = "Would you like to join the banque 是否參加晚宴?")]
         public bool AttendBanquet { get; set; }
-        [Display(Name = "Special Note 特別需求: ")]
+        [Display(Name = "Special Note 特別需求(素食或其他): ")]
         public string Comment { get; set; }
     }
 }

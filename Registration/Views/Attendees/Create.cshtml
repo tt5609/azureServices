@@ -4,7 +4,7 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<h2>2014 Annual Conference Registration</h2>
 
 
 @using (Html.BeginForm()) 
@@ -12,8 +12,6 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Attendee</h4>
-        <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -46,6 +44,25 @@
                     @Html.EditorFor(model => model.AttendBanquet)
                     @Html.ValidationMessageFor(model => model.AttendBanquet, "", new { @class = "text-danger" })
                 </div>
+                <div class="banquetMenu">
+                    <ul>
+                        <li>Reqular meal
+                            <ol>
+                                <li>Crowne Holiday Salad</li>
+                                <li>Sliced Roasted Turkey Breast</li>
+                                <li>Homemade Turkey Gravy</li>
+                                <li>Southwest stuffing</li>
+                                <li>Fresh Seasonal Vegetable</li>
+                                <li>Pecan Pie</li>
+                            </ol>
+                        </li>
+                        <li>Vegetarian
+                            <ol>
+                                <li>Linguine Primavera, Topped with Julienne Vegetables, Mushrooms and Tomato</li>
+                            </ol>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
 
@@ -66,9 +83,10 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to Home", "../Home/Index")
 </div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    @*@Scripts.Render("~/Scripts/custom.js")*@
 }
