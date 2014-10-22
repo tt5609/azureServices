@@ -24,5 +24,7 @@ namespace Registration.Models
         public bool AttendBanquet { get; set; }
         [Display(Name = "Special Note 特別需求(素食或其他): ")]
         public string Comment { get; set; }
+
+        public DateTime LastUpdated { get; set; }
     }
 }

@@ -4,9 +4,12 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using Registration.Models;
+using SendGrid;
 
 namespace Registration.Controllers
 {
@@ -17,7 +20,7 @@ namespace Registration.Controllers
         // GET: Attendees
         public ActionResult Index()
         {
-            return View(db.Attendees.ToList());
+            return View(db.Attendee.ToList());
         }
 
         // GET: Attendees/Details/5
@@ -27,7 +30,7 @@ namespace Registration.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Attendee attendee = db.Attendees.Find(id);
+            Attendee attendee = db.Attendee.Find(id);
             if (attendee == null)
             {
                 return HttpNotFound();
@@ -50,8 +53,10 @@ namespace Registration.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Attendees.Add(attendee);
+                attendee.LastUpdated = DateTime.Now;
+                db.Attendee.Add(attendee);
                 db.SaveChanges();
+                SendEmail(attendee);
                 return RedirectToAction("Index");
             }
 
@@ -65,7 +70,7 @@ namespace Registration.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Attendee attendee = db.Attendees.Find(id);
+            Attendee attendee = db.Attendee.Find(id);
             if (attendee == null)
             {
                 return HttpNotFound();
@@ -82,6 +87,7 @@ namespace Registration.Controllers
         {
             if (ModelState.IsValid)
             {
+                attendee.LastUpdated = DateTime.Now;
                 db.Entry(attendee).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -96,7 +102,7 @@ namespace Registration.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Attendee attendee = db.Attendees.Find(id);
+            Attendee attendee = db.Attendee.Find(id);
             if (attendee == null)
             {
                 return HttpNotFound();
@@ -109,8 +115,8 @@ namespace Registration.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Attendee attendee = db.Attendees.Find(id);
-            db.Attendees.Remove(attendee);
+            Attendee attendee = db.Attendee.Find(id);
+            db.Attendee.Remove(attendee);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -122,6 +128,46 @@ namespace Registration.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        private void SendEmail(Attendee attendee)
+        {
+            var message = new SendGridMessage();
+            message.From = new MailAddress("nateadallas@gmail.com");
+            var recipients = new List<string>
+                             {
+                                 @"nateadallas@gmail.com",
+                                 attendee.Email
+                             };
+            message.AddTo(recipients);
+            message.Subject = "台工會2014年會活動報名";
+            StringBuilder sb = new StringBuilder();
+            sb.Append(string.Format("<p>Dear {0}:</p>", attendee.Name));
+            sb.Append("<br/>");
+            sb.Append(string.Format("<p>Thank you for registering NATEA Dallas Chapter 2014 Annual Conference</p>"));
+            sb.Append("<p>感謝您報名台工會- 2014年年會活動報名</p>");
+            sb.Append("<br/>");
+            sb.Append("<p>You have provided the head count as following:(您報名資料如下)</p>");
+            sb.Append("<br/>");
+            sb.Append(string.Format("<p>How many people? {0}</p>", attendee.NumberOfAttendee));
+            sb.Append(string.Format("<p>Would you like to join the banquet? {0}</p>", attendee.AttendBanquet ? "Yes" : "No"));
+            sb.Append(string.Format("<p>Special note: {0}</p>", attendee.Comment));
+            sb.Append("<br/>");
+            sb.Append("<p>===================Event Detail(活動內容)=================</p>");
+            sb.Append("<br/>");
+            sb.Append("<p>達拉斯台工會敬上</p>");
+            message.Html = sb.ToString();
+
+            var credentials = getNetworkCredential();
+            var transportWeb = new Web(credentials);
+            transportWeb.Deliver(message);
+        }
+
+        private NetworkCredential getNetworkCredential()
+        {
+            var username = "azure_51facc643ce1eb59de02b1b49e9c5b1d@azure.com";
+            var pwd = "87IhmdmaaBZ6a9A";
+            return new NetworkCredential(username, pwd);
         }
     }
 }

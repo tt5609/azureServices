@@ -19,7 +19,7 @@ namespace Registration.Models
         {
         }
 
-        public System.Data.Entity.DbSet<Registration.Models.Attendee> Attendees { get; set; }
+        public System.Data.Entity.DbSet<Registration.Models.Attendee> Attendee { get; set; }
     
     }
 }
