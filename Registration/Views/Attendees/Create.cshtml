@@ -10,7 +10,10 @@
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-    
+    @section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Scripts/custom.js")
+    }   
     <div class="form-horizontal">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -60,7 +63,10 @@
                         <li>
                             <strong>Vegetarian</strong>
                             <ol>
+                                <li>Crowne Holiday Salad</li>
                                 <li>Linguine Primavera, Topped with Julienne Vegetables, Mushrooms and Tomato</li>
+                                <li>Fresh Seasonal Vegetable</li>
+                                <li>Pecan Pie</li>
                             </ol>
                         </li>
                         <li><strong>$25</strong>/person for NATEA-Dallas members</li>
@@ -89,8 +95,3 @@
 <div>
     <a href="../Home/Index">Back to Home</a>
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-    @*@Scripts.Render("~/Scripts/custom.js")*@
-}

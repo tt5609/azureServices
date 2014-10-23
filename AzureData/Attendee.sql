@@ -5,6 +5,7 @@
     [Email] NVARCHAR(150) NOT NULL, 
 	[NumberOfAttendee] int,
     [AttendBanquet] BIT NOT NULL DEFAULT 0, 
+	[MealSelection] nvarchar(50) null,
     [Comment] NVARCHAR(MAX) NULL,
 	[LastUpdated] DateTime DEFAULT getdate()
 )
