@@ -26,5 +26,6 @@ namespace Registration.Controllers
 
             return View();
         }
+
     }
 }

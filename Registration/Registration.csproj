@@ -178,6 +178,7 @@
     <Content Include="Views\Attendees\Details.cshtml" />
     <Content Include="Views\Attendees\Edit.cshtml" />
     <Content Include="Views\Attendees\Index.cshtml" />
+    <Content Include="Views\Attendees\RegistrationCompleted.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

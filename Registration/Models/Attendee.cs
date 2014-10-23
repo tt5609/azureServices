@@ -28,5 +28,29 @@ namespace Registration.Models
         public string Comment { get; set; }
 
         public DateTime LastUpdated { get; set; }
+
+        public List<Meal> MealTypes { get; set; }
     }
+
+    public class Meal
+    {
+		public int Id
+		{
+			get;
+			set;
+		}
+        public string Name { get; set; }
+		public MealType Type
+		{
+			get;
+			set;
+		}
+        public IEnumerable<string> Descriptions { get; set; }
+    }
+
+	public enum MealType
+	{
+		Regular,
+		Vegetarian
+	}
 }

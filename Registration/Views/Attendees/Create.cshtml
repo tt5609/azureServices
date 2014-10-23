@@ -1,97 +1,180 @@
 ﻿@model Registration.Models.Attendee
 
 @{
-    ViewBag.Title = "Create";
+	ViewBag.Title = "Create";
 }
 
 <h2>2014 Annual Conference Registration</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
-    @Html.AntiForgeryToken()
-    @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/Scripts/custom.js")
-    }   
-    <div class="form-horizontal">
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-            </div>
-        </div>
+	@Html.AntiForgeryToken()
+	@section Scripts {
+		@Scripts.Render("~/bundles/jqueryval")
+		@Scripts.Render("~/Scripts/custom.js")
+	}
+	<div class="form-horizontal">
+		@Html.ValidationSummary(true, "", new
+   {
+	   @class = "text-danger"
+   })
+		<div class="form-group">
+			@Html.LabelFor(model => model.Name, htmlAttributes: new
+	   {
+		   @class = "control-label col-md-2"
+	   })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.Name, new
+		   {
+			   htmlAttributes = new
+			   {
+				   @class = "form-control"
+			   }
+		   })
+				@Html.ValidationMessageFor(model => model.Name, "", new
+		   {
+			   @class = "text-danger"
+		   })
+			</div>
+		</div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-            </div>
-        </div>
+		<div class="form-group">
+			@Html.LabelFor(model => model.Email, htmlAttributes: new
+	   {
+		   @class = "control-label col-md-2"
+	   })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.Email, new
+		   {
+			   htmlAttributes = new
+			   {
+				   @class = "form-control"
+			   }
+		   })
+				@Html.ValidationMessageFor(model => model.Email, "", new
+		   {
+			   @class = "text-danger"
+		   })
+			</div>
+		</div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.NumberOfAttendee, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.NumberOfAttendee, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.NumberOfAttendee, "", new { @class = "text-danger" })
-            </div>
-        </div>
+		<div class="form-group">
+			@Html.LabelFor(model => model.NumberOfAttendee, htmlAttributes: new
+	   {
+		   @class = "control-label col-md-2"
+	   })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.NumberOfAttendee, new
+		   {
+			   htmlAttributes = new
+			   {
+				   @class = "form-control"
+			   }
+		   })
+				@Html.ValidationMessageFor(model => model.NumberOfAttendee, "", new
+		   {
+			   @class = "text-danger"
+		   })
+			</div>
+		</div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.AttendBanquet, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.AttendBanquet)
-                    @Html.ValidationMessageFor(model => model.AttendBanquet, "", new { @class = "text-danger" })
-                </div>
-                <div class="banquetMenu">
-                    <ul>
-                        <li>
-                            <strong>Regular meal</strong>
-                            <ol>
-                                <li>Crowne Holiday Salad</li>
-                                <li>Sliced Roasted Turkey Breast</li>
-                                <li>Homemade Turkey Gravy</li>
-                                <li>Southwest stuffing</li>
-                                <li>Fresh Seasonal Vegetable</li>
-                                <li>Pecan Pie</li>
-                            </ol>
-                        </li>
-                        <li>
-                            <strong>Vegetarian</strong>
-                            <ol>
-                                <li>Crowne Holiday Salad</li>
-                                <li>Linguine Primavera, Topped with Julienne Vegetables, Mushrooms and Tomato</li>
-                                <li>Fresh Seasonal Vegetable</li>
-                                <li>Pecan Pie</li>
-                            </ol>
-                        </li>
-                        <li><strong>$25</strong>/person for NATEA-Dallas members</li>
-                        <li><strong>$30</strong>/person for non-members</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+		<div class="form-group">
+			@Html.LabelFor(model => model.AttendBanquet, htmlAttributes: new
+	   {
+		   @class = "control-label col-md-2"
+	   })
+			<div class="col-md-10">
+				<div class="checkbox">
+					@Html.EditorFor(model => model.AttendBanquet)
+					@Html.ValidationMessageFor(model => model.AttendBanquet, "", new
+			   {
+				   @class = "text-danger"
+			   })
+				</div>
+				<div class="banquetMenu">
+					@{
+						foreach (var meal in Model.MealTypes)
+						{
+							<div>
+								@Html.RadioButtonFor(model => model.MealType, meal.Name, Model.MealType == meal.Name ? new { Checked = "checked" } : null)
+								@Html.Label(meal.Name)
+								@{
+							if (meal.Descriptions != null && meal.Descriptions.Count() > 0)
+							{
+								<ul>
+									@{
+								foreach (var desc in meal.Descriptions)
+								{
+									<li>@Html.Label(desc)</li>
+								}
+									}
+								</ul>
+							}
+								}
+							</div>
+						}
+					}
+					<div>
+						<ul>
+							<li><strong>$25</strong>/person for NATEA-Dallas members</li>
+							<li><strong>$30</strong>/person for non-members</li>
+						</ul>
+					</div>
+					@*<div>
+						<strong>@Html.RadioButtonFor(model => model.MealType, "Regular") 一般餐點 Regular Meal</strong>
+						<ul>
+							<li>Crowne Holiday Salad</li>
+							<li>Sliced Roasted Turkey Breast</li>
+							<li>Homemade Turkey Gravy</li>
+							<li>Southwest stuffing</li>
+							<li>Fresh Seasonal Vegetable</li>
+							<li>Pecan Pie</li>
+						</ul>
+						<strong>@Html.RadioButtonFor(model => model.MealType, "Veggie") 素食 Vegetarian</strong>
+						<ul>
+							<li>Crowne Holiday Salad</li>
+							<li>Linguine Primavera, Topped with Julienne Vegetables, Mushrooms and Tomato</li>
+							<li>Fresh Seasonal Vegetable</li>
+							<li>Pecan Pie</li>
+						</ul>
+						<ul>
+							<li><strong>$25</strong>/person for NATEA-Dallas members</li>
+							<li><strong>$30</strong>/person for non-members</li>
+						</ul>
+					</div>*@
+				</div>
+			</div>
+		</div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Comment, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextAreaFor(model => model.Comment, 3, 60, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Comment, "", new { @class = "text-danger" })
-            </div>
-        </div>
+		<div class="form-group">
+			@Html.LabelFor(model => model.Comment, htmlAttributes: new
+	   {
+		   @class = "control-label col-md-2"
+	   })
+			<div class="col-md-10">
+				@Html.TextAreaFor(model => model.Comment, 3, 60, new
+		   {
+			   htmlAttributes = new
+			   {
+				   @class = "form-control"
+			   }
+		   })
+				@Html.ValidationMessageFor(model => model.Comment, "", new
+		   {
+			   @class = "text-danger"
+		   })
+			</div>
+		</div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Register報名" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
+		<div class="form-group">
+			<div class="col-md-offset-2 col-md-10">
+				<input type="submit" value="Register報名" class="btn btn-default" />
+			</div>
+		</div>
+	</div>
 }
 
 <div>
-    <a href="../Home/Index">Back to Home</a>
+	<a href="../Home/Index">Back to Home</a>
 </div>
