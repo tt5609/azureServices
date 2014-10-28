@@ -195,9 +195,18 @@ namespace Registration.Controllers
 			sb.Append("<br/>");
 			sb.Append(string.Format("<p>How many people? {0}</p>", attendee.NumberOfAttendee));
 			sb.Append(string.Format("<p>Would you like to join the banquet? {0}</p>", attendee.AttendBanquet ? "Yes" : "No"));
+            if (attendee.AttendBanquet)
+            {
+                sb.Append(string.Format("<p>Meal selection: {0}</p>", attendee.MealType));
+            }
 			sb.Append(string.Format("<p>Special note: {0}</p>", attendee.Comment));
 			sb.Append("<br/>");
-			sb.Append("<p>===================Event Detail(活動內容)=================</p>");
+			sb.Append("<p>================Event Detail(活動內容)=================</p>");
+            sb.Append("<p>NATEA-Dallas 2014 Annual Conference</p>");
+            sb.Append("<p>達拉斯台工會2014年年會</p>");
+            sb.Append("<p>Date&Time 時間: 11/15/2014(Saturday) from 2:00pm to 9:00pm</p>");
+            sb.Append("<p>Location 地點: Crowne Plaza Hotel and Resorts.  14315 Midway Road, Addison, TX 75001</p>");
+            sb.Append("<p>Addmission: 免費入場.  晚宴費用: 會員$25, 非會員: $30</p>");
 			sb.Append("<br/>");
 			sb.Append("<p>達拉斯台工會敬上</p>");
 			message.Html = sb.ToString();
