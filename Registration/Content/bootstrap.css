@@ -6803,3 +6803,8 @@ td.visible-print {
     display: none !important;
   }
 }
+
+div.RegistrationForm{
+    background-image: url("images/2015AnnualConference.jpg");
+    background-repeat: no-repeat;
+}

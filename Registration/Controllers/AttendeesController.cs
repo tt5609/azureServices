@@ -54,10 +54,10 @@ namespace Registration.Controllers
 						new List<string>
 						{
 							"Crowne Holiday Salad",
-							"Sliced Roasted Turkey Breast",
-							"Homemade Turkey Gravy",
-							"Southwest stuffing",
+							"Sliced Roasted Turkey Breast with Homemade Turkey Gravy",
+							"Southwestern stuffing",
 							"Fresh Seasonal Vegetable",
+                            "Fresh Rolls and Butter",
 							"Pecan Pie"
 						}
 					},
@@ -72,6 +72,7 @@ namespace Registration.Controllers
 							"Crowne Holiday Salad",
 							"Linguine Primavera, Topped with Julienne Vegetables, Mushrooms and Tomato",
 							"Fresh Seasonal Vegetable",
+                            "Fresh Rolls and Butter",
 							"Pecan Pie"
 						}
 					}
@@ -176,20 +177,30 @@ namespace Registration.Controllers
 
 		private void SendEmail(Attendee attendee)
 		{
-			var message = new SendGridMessage();
-			message.From = new MailAddress("nateadallas@gmail.com");
-			var recipients = new List<string>
-                             {
-                                 @"nateadallas@gmail.com",
-                                 attendee.Email
-                             };
-			message.AddTo(recipients);
-			message.Subject = "台工會2014年會活動報名";
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential("nateatxdallas@gmail.com", "piicsntxdpsbaagb")
+            };
+
+            //var message = new SendGridMessage();
+            //message.From = new MailAddress("nateadallas@gmail.com");
+            //var recipients = new List<string>
+            //                 {
+            //                     @"nateadallas@gmail.com",
+            //                     attendee.Email
+            //                 };
+            //message.AddTo(recipients);
+            //message.Subject = "台工會2015年會活動報名";
 			StringBuilder sb = new StringBuilder();
 			sb.Append(string.Format("<p>Dear {0}:</p>", attendee.Name));
 			sb.Append("<br/>");
-			sb.Append(string.Format("<p>Thank you for registering NATEA Dallas Chapter 2014 Annual Conference</p>"));
-			sb.Append("<p>感謝您報名台工會- 2014年年會活動報名</p>");
+			sb.Append(string.Format("<p>Thank you for registering NATEA Dallas Chapter 2015 Annual Conference</p>"));
+			sb.Append("<p>感謝您報名台工會- 2015年年會活動報名</p>");
 			sb.Append("<br/>");
 			sb.Append("<p>You have provided the head count as following:(您報名資料如下)</p>");
 			sb.Append("<br/>");
@@ -200,11 +211,22 @@ namespace Registration.Controllers
 			sb.Append("<p>===================Event Detail(活動內容)=================</p>");
 			sb.Append("<br/>");
 			sb.Append("<p>達拉斯台工會敬上</p>");
-			message.Html = sb.ToString();
 
-			var credentials = getNetworkCredential();
-			var transportWeb = new Web(credentials);
-			transportWeb.Deliver(message);
+            using (var msg = new MailMessage("nateatxdallas@gmail.com", attendee.Email)
+            {
+                IsBodyHtml = true,
+                Subject = "台工會2015年會活動報名",
+                Body = sb.ToString()
+            })
+            {
+                smtp.Send(msg);
+            }
+
+            //message.Html = sb.ToString();
+
+            //var credentials = getNetworkCredential();
+            //var transportWeb = new Web(credentials);
+            //transportWeb.Deliver(message);
 		}
 
 		private NetworkCredential getNetworkCredential()
