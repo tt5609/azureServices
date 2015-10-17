@@ -216,7 +216,7 @@ namespace Registration.Controllers
             sb.Append("<p>NATEA-Dallas 2014 Annual Conference</p>");
             sb.Append("<p>達拉斯台工會2014年年會</p>");
             sb.Append("<p>主題:「台灣經濟與科技展望暨達拉斯台工會獎學金十年回顧」</p>");
-            sb.Append("<p>Keynote speakers: 范良信教授與范春美教授夫婦</p>");
+            sb.Append("<p>Keynote speakers: 范良信教授與范李春美教授夫婦</p>");
             sb.Append("<p>講題:「台灣在經濟急速全球化下的科技努力」(Taiwan’s Technological Efforts in Rapidly Globalizing World Economy) </p>");
             sb.Append("<p>Date&Time 時間: 11/7/2015(Saturday) from 2:00pm to 9:30pm</p>");
             sb.Append("<p>Location 地點: Crowne Plaza Hotel and Resorts.  14315 Midway Road, Addison, TX 75001</p>");
