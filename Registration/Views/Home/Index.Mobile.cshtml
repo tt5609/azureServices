@@ -1,8 +1,51 @@
 ﻿
 @{
-    ViewBag.Title = "MobileView";
+    ViewBag.Title = "NATEA-2015年年會報名表";
     Layout = "~/Views/Shared/_Layout.Mobile.cshtml";
 }
-
-<h2>MobileView</h2>
+<div class="container-fluid jumbotron">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>NATEA-Dallas Chapter北美台灣工程師協會達拉斯分會</h2>
+            <h3>2015 Annual Conference Registration Form</h3>
+            <h3>2015年年會報名表</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <ul>
+                <li>Date: <strong>11/07/2015 Saturday 星期六</strong></li>
+                <li>Time: <strong>2:00pm to 9:00pm 下午二點至七點</strong></li>
+                <li>
+                    Location 地點: <strong>Crown Plaza North Dallas/Addison</strong>
+                    <ul>
+                        <li>14315 Midway Road, Addison, TX 750001</li>
+                    </ul>
+                <li>
+                    Fee 費用:
+                    <ul>
+                        <li>Afternoon sessions are free.</li>
+                        <li>
+                            Evening banquet:
+                            <ul>
+                                <li><strong>$25</strong> for NATEA members</li>
+                                <li><strong>$30</strong> for non-members</li>
+                                <li><strong>$15</strong> for students</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div id="mapviewer" class="col-md-6">
+            <iframe id="map" width="450" height="350" scrolling="no" style="border:dotted;" frameborder="0" src="http://www.bing.com/maps/embed/?v=2&amp;cp=32.945133~-96.840050&amp;lvl=16&amp;sty=r&amp;q=14315%20Midway%20Road%2C%20Addison%2C%20TX%20750001&amp;form=LMLTEW&amp;emid=cf390d97-d077-d6c5-a9e3-dc0732c01a13"></iframe>
+            <div id="LME_maplinks" style="line-height:20px;">
+                <a id="LME_largerMap" style="font-size: 15px" href="http://www.bing.com/maps/?v=2&amp;cp=32.945133~-96.840050&amp;lvl=16&amp;sty=r&amp;q=14315%20Midway%20Road%2C%20Addison%2C%20TX%20750001&amp;form=LMLTEW" target="_blank" style="margin:0 7px">View Larger Map</a>&nbsp;|&nbsp;
+                <a id="LME_directions" style="font-size: 15px" href="http://www.bing.com/maps/?v=2&amp;cp=32.945133~-96.840050&amp;lvl=16&amp;sty=r&amp;q=14315%20Midway%20Road%2C%20Addison%2C%20TX%20750001&amp;form=LMLTEW&amp;rtp=%7Epos.32.9451332092285_-96.84004974365234_Northwest%20Dallas" target="_blank" style="margin:0 7px">Driving Directions</a>&nbsp;|&nbsp;
+                <a target="_blank" style="font-size: 15px" href="http://www.bing.com/maps/?cp=pgqr666xx0ns&sty=b&lvl=18&sp=&mm_embed=be">View Bird's Eye</a>
+            </div>
+            <a style="margin-top:30px;" href="/Attendees/Create" class="btn btn-primary btn-lg">Click to Register &rsaquo;&rsaquo; 我要報名 &rsaquo;&rsaquo;</a>
+        </div>
+    </div>
+</div>
 
